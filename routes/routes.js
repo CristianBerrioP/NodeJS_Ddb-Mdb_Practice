@@ -1,0 +1,16 @@
+const express=require('express')
+const productController=require('../controllers/productController')
+const awsProductController=require('../controllers/awsControllers/productController')
+const router=express.Router()
+
+router.get('/product', productController.getProducts)
+router.get('/product/:productId', productController.getProduct)
+router.get('/awsProducts', awsProductController.readProducts)
+router.post('/product', productController.saveProduct)
+router.post('/awsProduct', awsProductController.writeProduct)
+router.put('/product/:productId', productController.updateProduct)
+router.patch('/awsProduct', awsProductController.updateProductByReference) 
+router.delete('/product/:productId', productController.deleteProduct)
+router.delete('/product', productController.deleteProductByName)
+router.delete('/products', productController.deleteAllProductsByName)
+module.exports = router;
